@@ -12,6 +12,13 @@ function add(numbers) {
     
     const numArray = numbers.split(delimiter).map(num => num.trim()).filter(num => num !== "");
     
+    const negativesVal = numArray.filter(num => Number(num) < 0);
+    if (negativesVal.length > 0) {
+        throw new Error(`negative numbers not allowed ${negativesVal.join(",")}`);
+    }
+    
     return numArray.reduce((sum, num) => sum + Number(num), 0);
 }
+
+module.exports = add;
 
